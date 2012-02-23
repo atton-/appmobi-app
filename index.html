@@ -37,8 +37,19 @@
 	
 	function main() {
 		//AppMobi.notification.alert("test!",new Date(),"stop");
-		setInterval("setMes(clock())",1000);
+		startTimer();
+		stopTimer();
 	}
+	
+	function startTimer(){
+		Timer = setInterval("setMes(clock())",1000);
+	}
+
+	function stopTimer(){
+		clearInterval(Timer);
+		document.getElementById("test").innerHTML = "stoped";
+	}
+
 
 	function setMes(mes){
 		document.getElementById("message").innerHTML = mes;
