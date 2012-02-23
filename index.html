@@ -80,16 +80,23 @@
 
 	function doBeep(){
 		if(beep > 0){
+			
 			beep--;
-			AppMobi.notification.beep(beep_num+1);		//beep
+			//beep
+			if(beep_num > 5){
+				AppMobi.notification.beep(5);		
+			}else{
+				AppMobi.notification.beep(beep_num+1);		
+			}
 			document.getElementById("status").innerHTML = "beep!" + beep;
+
 		}else{
 			//resetting
 			count = Snooze;
 			beep = beepTime;
-			if(beep_num < 5) beep_num++;
+			beep_num++;
 			//tweet
-			document.getElementById("status").innerHTML = "snooze and tweet";
+			document.getElementById("status").innerHTML = "snooze and tweet   count : " + beep_num;
 		}
 	}
 
