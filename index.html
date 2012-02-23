@@ -34,11 +34,20 @@
 	var beepTime = 5;
 	var beep = beepTime;
 	var Snooze = 30;
+	var Timer = 0;
 	
 	function main() {
-		//AppMobi.notification.alert("test!",new Date(),"stop");
-		startTimer();
-		//stopTimer();
+		document.getElementById("but").addEventListener("click",pressButton());
+	}
+
+	function pressButton(){
+		if(Timer == 0){
+			document.getElementById("alert").innerHTML = "zero";
+			startTimer();
+		}else{
+			document.getElementById("alert").innerHTML = "not zero" + Timer;
+			stopTimer();
+		}
 	}
 	
 	function startTimer(){
@@ -48,6 +57,7 @@
 
 	function stopTimer(){
 		clearInterval(Timer);
+		Timer = 0;
 		document.getElementById("test").innerHTML = "stoped";
 	}
 
@@ -83,14 +93,13 @@
 <!-- 以下に自分のHTMLを書く -->            
 <body>
     <div data-role="pager">
-        <div data-role="header"><h1>カメラ撮影</h1></div>
+        <div data-role="header"><h1>ねてたー</h1></div>
         <div data-role="content">
 			<div data-role="text" id="text"></div>
-			<div data-role="button" id="shoot">撮影</div>
 			<div id="message">ほげ</div>
 			<div id="alert">アラート未設定</div>
 			<div id="test"></div>
-			
+			<div data-role="button" id="but">開始</div>
         </div>
 	<div data-role="footer" id="footer">
     </div>
