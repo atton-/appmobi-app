@@ -37,27 +37,26 @@
 	var Timer = 0;
 	
 	function main() {
-		document.getElementById("but").addEventListener("click",pressButton());
+		document.getElementById("but").addEventListener("click",function(){pressButton();});
 	}
 
 	function pressButton(){
 		if(Timer == 0){
-			document.getElementById("alert").innerHTML = "zero";
 			startTimer();
 		}else{
-			document.getElementById("alert").innerHTML = "not zero" + Timer;
 			stopTimer();
 		}
 	}
 	
 	function startTimer(){
 		//add setcount
+		setMes(count);
 		Timer = setInterval("setMes(clock())",1000);
 	}
 
 	function stopTimer(){
 		clearInterval(Timer);
-		Timer = 0;
+		Timer = -1;
 		document.getElementById("test").innerHTML = "stoped";
 	}
 
