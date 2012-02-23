@@ -33,8 +33,9 @@
 	var count = 3;					//カウントダウンの時間
 	var beepTime = 5;				//ビープ時間(秒)
 	var beep = beepTime;	
-	var Snooze = 30;				//スヌーズ間隔(秒)
+	var Snooze = 10;				//スヌーズ間隔(秒)
 	var Timer = 0;
+	var beep_num = 0;				//beep回数
 	
 	function main() {
 		document.getElementById("button").addEventListener("click",function(){pressButton();});
@@ -60,7 +61,7 @@
 		clearInterval(Timer);
 		Timer = -1;
 		document.getElementById("alert").innerHTML = "アラームを解除しました";
-		document.getElementById("test").innerHTML = "stoped";
+		document.getElementById("status").innerHTML = "stoped";
 	}
 
 
@@ -80,13 +81,15 @@
 	function doBeep(){
 		if(beep > 0){
 			beep--;
-			//alerm
-			document.getElementById("test").innerHTML = "beep!" + beep;
+			AppMobi.notification.beep(beep_num+1);		//beep
+			document.getElementById("status").innerHTML = "beep!" + beep;
 		}else{
 			//resetting
 			count = Snooze;
 			beep = beepTime;
-			document.getElementById("test").innerHTML = "snooze and tweet";
+			if(beep_num < 5) beep_num++;
+			//tweet
+			document.getElementById("status").innerHTML = "snooze and tweet";
 		}
 	}
 
@@ -98,9 +101,9 @@
         <div data-role="header"><h1>ねてたー</h1></div>
         <div data-role="content">
 			<div data-role="text" id="text"></div>
-			<div id="message">ほげ</div>
-			<div id="alert">アラート未設定</div>
-			<div id="test"></div>
+			<div id="message">count</div>
+			<div id="alert">アラーム未設定</div>
+			<div id="status"></div>
 			<div data-role="button" id="button">開始</div>
         </div>
 	<div data-role="footer" id="footer">
