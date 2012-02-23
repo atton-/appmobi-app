@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="ja_JP">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- AppMobirライブラリの読み込み -->
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+    <script type="text/javascript" language="javascript">
+        document.addEventListener("appMobi.device.ready", function () {
+            //AppMobi.display.useViewport(768,1024);
+            AppMobi.device.hideSplashScreen();
+        main();
+        }, false);
+    </script> 
+    
+    <!-- jQuery Mobileライブラリの読み込み -->    
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
+    
+    <!-- 自分のスタイルをここに設定 -->        
+    <style type="text/css">
+	#footer {
+	    position: absolute;
+	    top: 430px;
+	    width: 100%;
+	}
+    </style>
+    
+    <!-- 以下に自分のプログラムを書く -->            
+    <script type="text/javascript">
+	var Count = 10;
+	var Snooze = 60;
+	
+	function main() {
+		//AppMobi.notification.alert("test!",new Date(),"stop");
+		setInterval("setMes(clock())",1000);
+	}
+
+	function setMes(mes){
+		document.getElementById("message").innerHTML = mes;
+	}
+
+	function getNowDate(){
+
+		var dates = "";
+		var NowDate = new Date();
+
+		dates += NowDate.getHours() + "h ";
+		dates += NowDate.getMinutes() + "m ";
+		dates += NowDate.getSeconds() + "s";
+
+		return dates;
+	}
+
+	function clock(){
+		if(Count > 0) Count--;
+		return Count;
+	}
+
+    </script>    
+</head>
+<!-- 以下に自分のHTMLを書く -->            
+<body>
+    <div data-role="pager">
+        <div data-role="header"><h1>カメラ撮影</h1></div>
+        <div data-role="content">
+			<div data-role="text" id="text"></div>
+			<div data-role="button" id="shoot">撮影</div>
+			<div id="message">ほげ</div>
+			<div id="alert">アラート未設定</div>
+			
+        </div>
+	<div data-role="footer" id="footer">
+    </div>
+
+</body>
+</html>
