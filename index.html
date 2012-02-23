@@ -38,10 +38,11 @@
 	function main() {
 		//AppMobi.notification.alert("test!",new Date(),"stop");
 		startTimer();
-		stopTimer();
+		//stopTimer();
 	}
 	
 	function startTimer(){
+		//add setcount
 		Timer = setInterval("setMes(clock())",1000);
 	}
 
@@ -73,6 +74,7 @@
 			//resetting
 			count = Snooze;
 			beep = beepTime;
+			document.getElementById("test").innerHTML = "snooze and tweet";
 		}
 	}
 
