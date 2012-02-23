@@ -30,8 +30,10 @@
     
     <!-- 以下に自分のプログラムを書く -->            
     <script type="text/javascript">
-	var Count = 10;
-	var Snooze = 60;
+	var count = 3;
+	var beepTime = 5;
+	var beep = beepTime;
+	var Snooze = 30;
 	
 	function main() {
 		//AppMobi.notification.alert("test!",new Date(),"stop");
@@ -42,21 +44,25 @@
 		document.getElementById("message").innerHTML = mes;
 	}
 
-	function getNowDate(){
-
-		var dates = "";
-		var NowDate = new Date();
-
-		dates += NowDate.getHours() + "h ";
-		dates += NowDate.getMinutes() + "m ";
-		dates += NowDate.getSeconds() + "s";
-
-		return dates;
+	function clock(){
+		if(count > 0){
+			count--;
+		}else{
+			doBeep();
+		}
+		return count;
 	}
 
-	function clock(){
-		if(Count > 0) Count--;
-		return Count;
+	function doBeep(){
+		if(beep > 0){
+			beep--;
+			//alerm
+			document.getElementById("test").innerHTML = "beep!" + beep;
+		}else{
+			//resetting
+			count = Snooze;
+			beep = beepTime;
+		}
 	}
 
     </script>    
@@ -70,6 +76,7 @@
 			<div data-role="button" id="shoot">撮影</div>
 			<div id="message">ほげ</div>
 			<div id="alert">アラート未設定</div>
+			<div id="test"></div>
 			
         </div>
 	<div data-role="footer" id="footer">
