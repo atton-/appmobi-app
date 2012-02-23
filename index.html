@@ -30,14 +30,14 @@
     
     <!-- 以下に自分のプログラムを書く -->            
     <script type="text/javascript">
-	var count = 3;
-	var beepTime = 5;
-	var beep = beepTime;
-	var Snooze = 30;
+	var count = 3;					//カウントダウンの時間
+	var beepTime = 5;				//ビープ時間(秒)
+	var beep = beepTime;	
+	var Snooze = 30;				//スヌーズ間隔(秒)
 	var Timer = 0;
 	
 	function main() {
-		document.getElementById("but").addEventListener("click",function(){pressButton();});
+		document.getElementById("button").addEventListener("click",function(){pressButton();});
 	}
 
 	function pressButton(){
@@ -51,12 +51,15 @@
 	function startTimer(){
 		//add setcount
 		setMes(count);
+		document.getElementById("alert").innerHTML = "アラームを設定しました";
+		document.getElementById("button").innerHTML = "解除";
 		Timer = setInterval("setMes(clock())",1000);
 	}
 
 	function stopTimer(){
 		clearInterval(Timer);
 		Timer = -1;
+		document.getElementById("alert").innerHTML = "アラームを解除しました";
 		document.getElementById("test").innerHTML = "stoped";
 	}
 
@@ -98,7 +101,7 @@
 			<div id="message">ほげ</div>
 			<div id="alert">アラート未設定</div>
 			<div id="test"></div>
-			<div data-role="button" id="but">開始</div>
+			<div data-role="button" id="button">開始</div>
         </div>
 	<div data-role="footer" id="footer">
     </div>
